@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="./favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>todox - Pure Javascript Todolist</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                <div class="card shadow8">
+                    <div class="card-body">
+                        <div class="logo text-center">
+                            <img id="logo" alt="" class="logo">
+                            todox
+                        </div>
+                        <div class="addTaskContainer shadow4a">
+                            <form>
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control" id="input-task" required autocomplete="off">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-info btnAdd" type="submit">EKLE</button>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Lütfen görev giriniz!
+                                </div>
+                            </form>
+                        </div>
+                        <div class="taskStatusContainer">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <span class="createdTaskCount">--</span>
+                                </div>
+                                <div class="col text-right">
+                                    <span class="completedTaskCount">--</span>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col text-left">
+                                    <span>Toplam</span>
+                                </div>
+
+                                <div class="col text-right">
+                                    <span>Tamamlanan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="taskList list-unstyled"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+.card {
+  background: #fbfbfb;
+  border: solid 1px #f1f1f1;
+  border-radius: 0.25rem;
+  //   box-shadow: 0 2px 49px rgba(101, 124, 147, 0.2);
+}
+.logo {
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #636c75;
+  img {
+    width: 29px;
+    margin-top: -6px;
+  }
+}
+
+.taskStatusContainer {
+  background: #f4f5f7;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  span {
+    color: #aaacad;
+    font-weight: 300;
+    display: inline-block;
+  }
+  .createdTaskCount {
+    font-weight: 700;
+    color: #0c5460;
+    font-size: 36px;
+    line-height: 36px;
+  }
+  .completedTaskCount {
+    font-weight: 700;
+    color: #0c5460;
+    font-size: 36px;
+    line-height: 36px;
+  }
+}
+.addTaskContainer {
+  margin: 0 0 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  input.form-control {
+    border: 1px solid #e0ebec;
+  }
+  .btn.btn-outline-info {
+    border-color: #e0ebec;
+  }
+}
+.taskList {
+  margin-bottom: 0;
+  li {
+    border-bottom: solid 1px #e0ebec;
+    .custom-control {
+      padding: 0 70px 0 40px;
+    }
+    .custom-checkbox {
+      &:hover {
+        background: #e0ebec;
+        .btnDelete {
+          transition: none;
+          background: #c6dbde;
+          // color: #e0ebec;
+        }
+      }
+      .custom-control-label {
+        padding: 20px 20px 20px 10px;
+        cursor: pointer;
+        display: flex;
+        &:before,
+        &:after {
+          width: 24px;
+          height: 24px;
+          border-radius: 12px;
+          border: solid 2px #dedcdc;
+          top: 20px;
+          cursor: pointer;
+        }
+        &:after {
+          border: none;
+        }
+      }
+      .custom-control-input {
+        &:checked ~ .custom-control-label {
+          text-decoration: line-through;
+          color: #cacaca;
+          &:before {
+            border-color: #81b501;
+            background-color: #81b501;
+          }
+        }
+      }
+
+      .btnDelete {
+        color: #ff5400;
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: #f7e1e1;
+        width: 32px;
+        height: 32px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 16px;
+        padding: 0;
+        border: 0;
+        &:hover {
+          color: red;
+          background: #f9d6d6;
+        }
+        i {
+          font-size: 13px;
+        }
+        > * {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+#loaderContent {
+  padding: 40px 0;
+  text-align: center;
+  .ball-grid-pulse,
+  .ball-spin-fade-loader {
+    display: inline-block;
+    & > div {
+      background-color: #8c9c8e;
+    }
+  }
+}
+.invalid-feedback {
+  color: #dc3545;
+}
+.invalid-input-value {
+  background: #fff2f3;
+}
+.m-footer {
+  padding: 15px 15px 15px;
+}

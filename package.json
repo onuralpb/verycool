@@ -1,0 +1,80 @@
+{
+  "name": "todox",
+  "version": "0.2.0",
+  "description": "Pure Javascript Todolist with webpack 4, bootstrap 4, firebase and ES6+",
+  "author": "Onur Alp Baklaci",
+  "homepage": "https://github.com/onuralpb/todox",
+  "scripts": {
+    "report": "webpack-bundle-analyzer --port 4200 dist/stats.json",
+    "jserver": "json-server --watch todox.json --port 5555",
+    "serve:dev": "webpack-dev-server -d --config webpack.dev.config.js",
+    "serve:prod": "webpack-dev-server -d --config webpack.prod.config.js",
+    "build:dev": "webpack -d --config webpack.dev.config.js",
+    "build:prod": "webpack -p --config webpack.prod.config.js",
+    "start:dev": "concurrently \"npm:jserver\" \"npm:serve:dev\"",
+    "start:prod": "concurrently  \"npm:serve:prod\""
+  },
+  "dependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/polyfill": "7.8.7",
+    "@babel/preset-env": "7.9.5",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "animate.css": "^3.7.2",
+    "bootstrap": "4.4.1",
+    "concurrently": "5.1.0",
+    "firebase": "^7.14.2",
+    "loaders.css": "^0.1.2",
+    "webpack": "^4.42.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "babel-loader": "8.1.0",
+    "bootbox": "^5.4.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "css-loader": "3.5.2",
+    "file-loader": "6.0.0",
+    "html-loader": "1.1.0",
+    "html-webpack-plugin": "4.2.0",
+    "jquery": "3.5.0",
+    "json-server": "^0.16.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "node-sass": "4.13.1",
+    "path": "^0.12.7",
+    "popper.js": "^1.16.1",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.1.4",
+    "webpack-bundle-analyzer": "^3.7.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "prettier": {
+    "arrowParens": "avoid"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:onuralpb/todox.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "todox",
+    "css-animations",
+    "javascript-todolist",
+    "bootstrap4",
+    "scss",
+    "firebase-realtime-database",
+    "firebase",
+    "es6",
+    "json-server",
+    "webpack4",
+    "loaders",
+    "webpack-dev-server",
+    "javascript",
+    "fontawesome5",
+    "animatecss",
+    "css"
+  ]
+}

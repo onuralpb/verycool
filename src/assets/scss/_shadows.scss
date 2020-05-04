@@ -1,0 +1,102 @@
+.shadow1 {
+  box-shadow: 0 20px 50px rgba(59, 43, 91, 0.1);
+}
+.shadow2 {
+  box-shadow: 0 20px 50px rgba(59, 43, 91, 0.2);
+}
+.shadow3 {
+  box-shadow: 0 20px 50px rgba(59, 43, 91, 0.3);
+}
+.shadow4 {
+  box-shadow: 0px 10px 1px #e6e6e6, 0 34px 34px #d2d2d2;
+}
+.shadow4a {
+  box-shadow: 0px 6px 1px #e6e6e6, 0 9px 8px #eae8e8;
+}
+.shadow4b {
+  box-shadow: 0px 6px 1px #e6e6e6, 0 10px 11px #eae8e8;
+}
+.shadow5 {
+  position: relative;
+}
+.shadow5:before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  bottom: 15px;
+  left: 8px;
+  top: 80%;
+  width: 50%;
+  background: #777;
+  -webkit-box-shadow: 0 18px 15px #b3b3b3;
+  -moz-box-shadow: 0 18px 15px #b3b3b3;
+  box-shadow: 0 18px 15px #b3b3b3;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+}
+.shadow6 {
+  position: relative;
+}
+.shadow6:before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  bottom: 15px;
+  right: 8px;
+  top: 80%;
+  width: 50%;
+  background: #777;
+  -webkit-box-shadow: 0 18px 15px #b3b3b3;
+  -moz-box-shadow: 0 18px 15px #b3b3b3;
+  box-shadow: 0 18px 15px #b3b3b3;
+  -webkit-transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -o-transform: rotate(4deg);
+  -ms-transform: rotate(4deg);
+  transform: rotate(4deg);
+}
+.shadow7 {
+  position: relative;
+}
+.shadow7:before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  bottom: 15px;
+  left: 8px;
+  top: 80%;
+  width: 50%;
+  background: #777;
+  -webkit-box-shadow: 0 18px 15px #b3b3b3;
+  -moz-box-shadow: 0 18px 15px #b3b3b3;
+  box-shadow: 0 18px 15px #b3b3b3;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+}
+.shadow7:after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  bottom: 15px;
+  right: 8px;
+  top: 80%;
+  width: 50%;
+  background: #777;
+  -webkit-box-shadow: 0 18px 15px #b3b3b3;
+  -moz-box-shadow: 0 18px 15px #b3b3b3;
+  box-shadow: 0 18px 15px #b3b3b3;
+  -webkit-transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -o-transform: rotate(4deg);
+  -ms-transform: rotate(4deg);
+  transform: rotate(4deg);
+}
+.shadow8 {
+  box-shadow: 0 0 24px rgb(51, 13, 95);
+}
