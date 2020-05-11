@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/solid.min.css";
 import "animate.css/animate.min.css";
 //loaders.css : https://connoratherton.com/loaders
 import "loaders.css/loaders.min.css";
+import "chartist/dist/chartist.min.css";
 import "./../assets/scss/bundle.scss";
 
 /* JS Library imports */
@@ -17,4 +18,3 @@ window.$ = window.jQuery = jQuery;
 // import "./../../node_modules/popper.js/dist/esm/popper.min.js";
 import "popper.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-global.bootbox = require("bootbox");

@@ -1,67 +1,86 @@
 import { loader } from "./loader";
+import UI from "./ui";
 
-export class Request {
+const ui = new UI();
+export default class Request {
   constructor() {
-    this.url = "http://localhost:5555/todox";
-    this.taskList = document.querySelector(".taskList");
-  }
-  get() {
-    return new Promise((resolve, reject) => {
-      loader(true, this.taskList);
-      fetch(this.url)
-        .then(response => response.json())
-        .then(json => {
-          setTimeout(() => {
-            resolve(json);
-            loader(false);
-          }, 1000);
-        })
-        .catch(err => {
-          reject(err);
-          loader(false);
-        });
-    });
+    // json url for Method 2
+    // this.url = {
+    //   anlik: "http://localhost:5555/anlik", //realtime
+    //   saatlik: "http://localhost:5555/saatlik", //hourly
+    //   gunluk: "http://localhost:5555/gunluk", //daily
+    // };
+
+    // json for json-server
+    // this.url = [
+    //   "http://localhost:5555/anlik", //realtime
+    //   "http://localhost:5555/saatlik", //hourly
+    //   "http://localhost:5555/gunluk", //daily
+    // ];
+    this.url = [
+      "https://api.climacell.co/v3/weather/realtime?lat=41.01384&lon=28.94966&unit_system=si&fields=temp%2Cwind_gust%2Cfeels_like%2Cdewpoint%2Chumidity%2Cwind_speed%2Croad_risk_score%2Csunrise%2Csunset%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //realtime
+      "https://api.climacell.co/v3/weather/forecast/hourly?lat=41.01384&lon=28.94966&unit_system=si&start_time=now&fields=temp&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //hourly
+      "https://api.climacell.co/v3/weather/forecast/daily?lat=41.01384&lon=28.94966&unit_system=si&start_time=now&fields=temp%2Cwind_speed%2Cprecipitation_probability%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //daily
+    ];
   }
 
-  async post(data) {
-    const response = await fetch(this.url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    const responseData = await response.json();
-
-    return responseData;
+  async getAllData() {
+    loader(true, ui.weekView);
+    try {
+      return await Promise.all(
+        this.url.map(url => fetch(url).then(response => response.json()))
+      ).then(data => {
+        loader(false);
+        return {
+          realTime: data[0],
+          hourly: data[1],
+          daily: data[2],
+        };
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  put(data) {
-    return new Promise((resolve, reject) => {
-      fetch(this.url + "/" + data.id, {
-        method: "PUT",
-        body: JSON.stringify({
-          name: data.name,
-          completed: data.completed,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then(response => response.json())
-        .then(json => resolve(json))
-        .catch(err => reject(err));
-    });
-  }
+  ////////////
+  // Method 2 for multiple fetch data with promise
+  ////////////
 
-  delete(id) {
-    return new Promise((resolve, reject) => {
-      fetch(this.url + "/" + id, {
-        method: "DELETE",
-      })
-        .then(response => response.json())
-        .then(json => resolve(json))
-        .catch(err => reject(err));
-    });
-  }
+  // async getAllData() {
+  //   return Promise.all([
+  //     this.getDataRealtime(),
+  //     this.getDataHourly(),
+  //     this.getDataDaily(),
+  //   ]).then(data => {
+  //     return {
+  //       realTime: data[0],
+  //       hourly: data[1],
+  //       daily: data[2],
+  //     };
+  //   });
+  // }
+
+  // async getDataRealtime() {
+  //   const response = await fetch(this.url.anlik);
+  //   const responseData = await response.json();
+  //   return responseData;
+  // }
+
+  // getDataHourly() {
+  //   return new Promise((resolve, reject) => {
+  //     fetch(this.url.saatlik)
+  //       .then(response => response.json())
+  //       .then(data => resolve(data))
+  //       .catch(err => reject(err));
+  //   });
+  // }
+
+  // getDataDaily() {
+  //   return new Promise((resolve, reject) => {
+  //     fetch(this.url.gunluk)
+  //       .then(response => response.json())
+  //       .then(data => resolve(data))
+  //       .catch(err => reject(err));
+  //   });
+  // }
 }

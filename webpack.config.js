@@ -1,13 +1,17 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-// const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+  entry: path.resolve(__dirname, "src/app.js"),
   stats: {
     colors: true,
+  },
+  output: {
+    filename: "[name].bundle.js",
+    chunkFilename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -78,7 +82,7 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "assets/svg/",
+          outputPath: "/assets/svg/",
           publicPath: "/assets/svg/",
         },
       },
@@ -100,6 +104,19 @@ module.exports = {
     inline: true,
     historyApiFallback: true,
     watchContentBase: true,
+    contentBase: path.join(__dirname, "dist"),
+    port: 3100,
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
@@ -111,15 +128,5 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: "disabled",
-      generateStatsFile: false,
-      statsOptions: { source: false },
-    }),
-    // new BrowserSyncPlugin({
-    //   host: "localhost",
-    //   port: 3100,
-    //   server: { baseDir: ["dist"] },
-    // }),
   ],
 };

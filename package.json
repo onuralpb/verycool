@@ -1,18 +1,15 @@
 {
-  "name": "todox",
-  "version": "0.2.0",
-  "description": "Pure Javascript Todolist with webpack 4, bootstrap 4, firebase and ES6+",
+  "name": "verycool",
+  "version": "0.1.0",
+  "description": "Simple Weather App",
   "author": "Onur Alp Baklaci",
-  "homepage": "https://github.com/onuralpb/todox",
+  "homepage": "https://github.com/onuralpb/verycool",
   "scripts": {
-    "report": "webpack-bundle-analyzer --port 4200 dist/stats.json",
-    "jserver": "json-server --watch todox.json --port 5555",
-    "serve:dev": "webpack-dev-server -d --config webpack.dev.config.js",
-    "serve:prod": "webpack-dev-server -d --config webpack.prod.config.js",
-    "build:dev": "webpack -d --config webpack.dev.config.js",
-    "build:prod": "webpack -p --config webpack.prod.config.js",
-    "start:dev": "concurrently \"npm:jserver\" \"npm:serve:dev\"",
-    "start:prod": "concurrently  \"npm:serve:prod\""
+    "jserver": "json-server --watch verycool.json --port 5555",
+    "serve": "webpack-dev-server -d",
+    "build:dev": "webpack -d --watch",
+    "build:prod": "webpack -p",
+    "start": "concurrently \"npm:jserver\" \"npm:serve\" \"npm:build:dev\""
   },
   "dependencies": {
     "@babel/cli": "7.8.4",
@@ -22,6 +19,8 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "animate.css": "^3.7.2",
     "bootstrap": "4.4.1",
+    "chartist": "^0.11.4",
+    "chartist-plugin-pointlabels": "0.0.6",
     "concurrently": "5.1.0",
     "firebase": "^7.14.2",
     "loaders.css": "^0.1.2",
@@ -31,9 +30,6 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "babel-loader": "8.1.0",
-    "bootbox": "^5.4.0",
-    "browser-sync": "^2.26.7",
-    "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "3.5.2",
     "file-loader": "6.0.0",
     "html-loader": "1.1.0",
@@ -46,7 +42,6 @@
     "popper.js": "^1.16.1",
     "sass-loader": "8.0.2",
     "style-loader": "1.1.4",
-    "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
@@ -56,11 +51,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git@github.com:onuralpb/todox.git"
+    "url": "https://git@github.com:onuralpb/verycool.git"
   },
   "license": "MIT",
   "keywords": [
-    "todox",
+    "verycool",
     "css-animations",
     "javascript-todolist",
     "bootstrap4",

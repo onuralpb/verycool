@@ -2,5 +2,3 @@
 .DS_Store
 /dist
 /dist_firebase
-/src/modules/databaseConfig.firebase.js
-src/modules/databaseConfig.firebase.js
