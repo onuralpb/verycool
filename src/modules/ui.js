@@ -44,7 +44,7 @@ export default class UI {
       weatherValue == "mostly_clear" ||
       weatherValue == "clear"
     ) {
-      if (hour >= 20 || hour <= 6) {
+      if (hour >= 21 || hour <= 6) {
         weatherValue += "_night";
       }
     }
@@ -68,19 +68,13 @@ export default class UI {
         this.fillDayView(info, i);
       }
     });
-    const dayView = document.querySelectorAll(".dayView");
-    dayView.forEach(day => {
-      day.addEventListener("click", () => {
-        this.changeHoursOfDay(day.id);
-      });
-    });
   }
 
   fillDayView(info, i) {
     const dayViewContent = `
     <div class="col px-0">
         <div class="dayView" id=${i}>
-            <span class="day">Pzt</span>
+            <span class="day">${this.shortDays()[i].short}</span>
             <span class="rain">% ${Math.round(
               info.wind_speed[1].max.value * 3.6
             )}</span>
@@ -99,12 +93,25 @@ export default class UI {
     this.weekView.insertAdjacentHTML("beforeend", dayViewContent);
   }
 
-  changeHoursOfDay(id) {
-    console.log("changeHoursOfDay", id);
+  shortDays() {
+    const days = [
+      { long: "Pazartesi", short: "Pzt" },
+      { long: "Salı", short: "Sal" },
+      { long: "Çarşamba", short: "Çar" },
+      { long: "Perşembe", short: "Per" },
+      { long: "Cuma", short: "Cum" },
+      { long: "Cumartesi", short: "Cmt" },
+      { long: "Pazar", short: "Paz" },
+    ];
+    const today = this.date.getTrDay();
+    const todayIndex = days.map(day => day.long).indexOf(today);
+    const daysAfterToday = days.slice(todayIndex);
+    const daysBeforeToday = days.slice(0, todayIndex);
+    const daysNew = [...daysAfterToday, ...daysBeforeToday];
+    return daysNew;
   }
 
   addHourly(hourly) {
-    console.log(hourly);
     const chart = new Chartist.Line(
       ".ct-chart",
       {

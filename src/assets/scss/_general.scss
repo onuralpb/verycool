@@ -54,6 +54,9 @@
     width: 70px;
   }
 }
+.weatherStatus {
+  font-size: 20px;
+}
 .temp {
   display: inline-block;
   text-align: center;
@@ -110,21 +113,21 @@
     }
     .day {
       color: #ffff1a;
-      font-size: 11px;
+      font-size: 16px;
       font-weight: 700;
     }
     .rain {
       color: #ffffff;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
     }
     .weatherIcon {
-      width: 20px;
+      width: 24px;
       margin: 10px 0;
     }
     .wind {
       color: #ffffff;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
     }
     .min-max {
@@ -133,7 +136,7 @@
       margin-top: 10px;
       li {
         padding: 0 8px;
-        font-size: 17px;
+        font-size: 18px;
         &:first-child {
           border-bottom: solid 1px #e99098;
         }
