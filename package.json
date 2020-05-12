@@ -22,7 +22,6 @@
     "chartist": "^0.11.4",
     "chartist-plugin-pointlabels": "0.0.6",
     "concurrently": "5.1.0",
-    "firebase": "^7.14.2",
     "loaders.css": "^0.1.2",
     "webpack": "^4.42.1"
   },
@@ -43,8 +42,7 @@
     "sass-loader": "8.0.2",
     "style-loader": "1.1.4",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2"
+    "webpack-dev-server": "^3.10.3"
   },
   "prettier": {
     "arrowParens": "avoid"
@@ -60,8 +58,6 @@
     "javascript-todolist",
     "bootstrap4",
     "scss",
-    "firebase-realtime-database",
-    "firebase",
     "es6",
     "json-server",
     "webpack4",
@@ -70,6 +66,7 @@
     "javascript",
     "fontawesome5",
     "animatecss",
-    "css"
+    "css",
+    "chartist"
   ]
 }

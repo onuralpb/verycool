@@ -1,6 +1,5 @@
 import "./modules/libs";
 
-import { addAnimate } from "./modules/animate";
 import Request from "./modules/request";
 import UI from "./modules/ui";
 
