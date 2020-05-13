@@ -27,7 +27,7 @@ export default class UI {
   }
 
   addLogo() {
-    return (this.logoContainer.src = logo);
+    this.logoContainer.src = logo;
   }
 
   addDate() {
@@ -44,9 +44,7 @@ export default class UI {
       weatherValue == "mostly_clear" ||
       weatherValue == "clear"
     ) {
-      if (hour >= 21 || hour <= 6) {
-        weatherValue += "_night";
-      }
+      (hour >= 21 || hour <= 6) && (weatherValue += "_night");
     }
     this.weatherImage.src = icon[weatherValue];
     this.weatherStatus.textContent = weatherInfoConvert(
@@ -71,17 +69,19 @@ export default class UI {
   }
 
   fillDayView(info, i) {
+    console.log("info", info);
+
     const dayViewContent = `
     <div class="col px-0">
         <div class="dayView" id=${i}>
             <span class="day">${this.shortDays()[i].short}</span>
-            <span class="rain">% ${Math.round(
-              info.wind_speed[1].max.value * 3.6
-            )}</span>
+            <span class="rain">% ${info.precipitation_probability.value}</span>
             <img class="weatherIcon" src="${
               icon[info.weather_code.value]
             }"></img>
-            <span class="wind">${info.precipitation_probability.value} km</span>
+            <span class="wind">${Math.round(
+              info.wind_speed[1].max.value * 3.6
+            )} km</span>
             <ul class="list-unstyled min-max">
                 <li class="maxTemp">${Math.round(info.temp[1].max.value)}</li>
                 <li class="minTemp">${Math.round(info.temp[0].min.value)}</li>
@@ -112,11 +112,14 @@ export default class UI {
   }
 
   addHourly(hourly) {
+    const hoursWeatherData = hourly
+      .map(weather => weather.temp.value)
+      .slice(0, 9);
     const chart = new Chartist.Line(
       ".ct-chart",
       {
-        labels: [15, 16, 17, 18, 19, 20, 21, 22, 23],
-        series: [[14, 14, 14, 16, 14, 18, 15, 11, 9]],
+        labels: this.hoursSort(),
+        series: [hoursWeatherData],
       },
       {
         lineSmooth: Chartist.Interpolation.simple({
@@ -127,8 +130,8 @@ export default class UI {
           right: 10,
           left: 10,
         },
-        low: 0,
-        // high: 40,
+        low: 1,
+        high: 25,
         onlyInteger: true,
         axisX: {
           offset: 30,
@@ -175,5 +178,44 @@ export default class UI {
         });
       }
     });
+  }
+
+  hoursSort() {
+    const hours = [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+    ];
+    const currentTime = this.date.d.getHours();
+    const currentTimeIndex = hours.indexOf(currentTime);
+    const hoursAfterCurrentTime = hours.slice(currentTimeIndex);
+    const hoursBeforeCurrentTime = hours.slice(0, currentTimeIndex);
+    const hoursNew = [
+      ...hoursAfterCurrentTime,
+      ...hoursBeforeCurrentTime,
+    ].slice(0, 9);
+    return hoursNew;
   }
 }

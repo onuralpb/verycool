@@ -18,9 +18,9 @@ export default class Request {
     //   "http://localhost:5555/gunluk", //daily
     // ];
     this.url = [
-      "https://api.climacell.co/v3/weather/realtime?lat=41.01384&lon=28.94966&unit_system=si&fields=temp%2Cwind_gust%2Cfeels_like%2Cdewpoint%2Chumidity%2Cwind_speed%2Croad_risk_score%2Csunrise%2Csunset%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //realtime
-      "https://api.climacell.co/v3/weather/forecast/hourly?lat=41.01384&lon=28.94966&unit_system=si&start_time=now&fields=temp&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //hourly
-      "https://api.climacell.co/v3/weather/forecast/daily?lat=41.01384&lon=28.94966&unit_system=si&start_time=now&fields=temp%2Cwind_speed%2Cprecipitation_probability%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //daily
+      "https://api.climacell.co/v3/weather/realtime?lat=40.998800&lon=29.081584&unit_system=si&fields=temp%2Cwind_gust%2Cfeels_like%2Cdewpoint%2Chumidity%2Cwind_speed%2Croad_risk_score%2Csunrise%2Csunset%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //realtime
+      "https://api.climacell.co/v3/weather/forecast/hourly?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //hourly
+      "https://api.climacell.co/v3/weather/forecast/daily?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp%2Cwind_speed%2Cprecipitation_probability%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //daily
     ];
   }
 
