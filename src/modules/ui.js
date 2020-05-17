@@ -69,8 +69,6 @@ export default class UI {
   }
 
   fillDayView(info, i) {
-    console.log("info", info);
-
     const dayViewContent = `
     <div class="col px-0">
         <div class="dayView" id=${i}>
@@ -130,8 +128,8 @@ export default class UI {
           right: 10,
           left: 10,
         },
-        low: 1,
-        high: 25,
+        low: 0,
+        high: 45,
         onlyInteger: true,
         axisX: {
           offset: 30,
