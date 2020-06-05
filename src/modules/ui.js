@@ -110,13 +110,17 @@ export default class UI {
   }
 
   addHourly(hourly) {
+    console.log("hourly: ", hourly);
+
     const hoursWeatherData = hourly
-      .map(weather => weather.temp.value)
+      .map(weather => Math.round(weather.temp.value))
       .slice(0, 9);
+    console.log("hoursWeatherData: ", hoursWeatherData);
     const chart = new Chartist.Line(
       ".ct-chart",
       {
         labels: this.hoursSort(),
+
         series: [hoursWeatherData],
       },
       {
