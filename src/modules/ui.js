@@ -50,7 +50,9 @@ export default class UI {
     this.weatherStatus.textContent = weatherInfoConvert(
       realTime.weather_code.value
     );
-    this.temp.innerHTML = `${realTime.temp.value}<span class="degreeCelsius">&deg;C</span>`;
+    this.temp.innerHTML = `${Math.round(
+      realTime.temp.value
+    )}<span class="degreeCelsius">&deg;C</span>`;
   }
 
   async addDaily(daily) {
