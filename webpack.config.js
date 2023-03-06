@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+  mode: "development",
   entry: path.resolve(__dirname, "src/app.js"),
   stats: {
     colors: true,
@@ -33,12 +34,11 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
-        loaders: [
+        use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: "/assets/css/",
-              reloadAll: true,
             },
           },
           {
@@ -61,7 +61,7 @@ module.exports = {
       },
       {
         test: /\.(jp(e*)g|png|gif)$/,
-        loaders: "file-loader",
+        loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
           outputPath: "assets/img/",
@@ -70,7 +70,7 @@ module.exports = {
       },
       {
         test: /\.ico$/,
-        loaders: "file-loader",
+        loader: "file-loader",
         options: {
           name: "[name].[ext]",
           outputPath: "/",
@@ -82,7 +82,7 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "/assets/svg/",
+          outputPath: "assets/svg/",
           publicPath: "/assets/svg/",
         },
       },
@@ -98,14 +98,10 @@ module.exports = {
     ],
   },
   devServer: {
-    publicPath: "/",
+    port: 3100,
     open: true,
     hot: true,
-    inline: true,
-    historyApiFallback: true,
-    watchContentBase: true,
-    contentBase: path.join(__dirname, "dist"),
-    port: 3100,
+    static: path.resolve(__dirname, "src"),
   },
   optimization: {
     minimizer: [

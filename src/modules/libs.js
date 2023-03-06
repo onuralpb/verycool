@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/solid.min.css";
 import "animate.css/animate.min.css";
 //loaders.css : https://connoratherton.com/loaders
 import "loaders.css/loaders.min.css";
-import "chartist/dist/chartist.min.css";
+import "chartist/dist/index.css";
 import "./../assets/scss/bundle.scss";
 
 /* JS Library imports */

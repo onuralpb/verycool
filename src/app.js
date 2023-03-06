@@ -18,7 +18,7 @@ function getData() {
     console.log("getdata data", data);
     ui.addWeatherInfos(realTime);
     // ui.addWeatherInfos(realTime[0]);
-    ui.addDaily(daily);
+    ui.addDaily(daily, realTime);
     ui.addHourly(hourly);
   });
 }

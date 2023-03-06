@@ -2,7 +2,8 @@ import logo from "./../assets/svg/wind.svg";
 import icon from "./weatherPics";
 import { weatherInfoConvert } from "./weatherInfoConvert";
 import { DateFormat } from "./date";
-import Chartist from "chartist";
+// import Chartist from "chartist";
+import { LineChart, Svg, Interpolation } from "chartist";
 import "chartist-plugin-pointlabels";
 
 export default class UI {
@@ -37,30 +38,30 @@ export default class UI {
   }
 
   addWeatherInfos(realTime) {
-    let weatherValue = realTime.weather_code.value;
-    const hour = this.date.d.getHours();
-    if (
-      weatherValue == "partly_cloudy" ||
-      weatherValue == "mostly_clear" ||
-      weatherValue == "clear"
-    ) {
-      (hour >= 21 || hour <= 6) && (weatherValue += "_night");
-    }
-    this.weatherImage.src = icon[weatherValue];
-    this.weatherStatus.textContent = weatherInfoConvert(
-      realTime.weather_code.value
-    );
+    let weatherValue = realTime.main.temp;
+
+    // const hour = this.date.d.getHours();
+    // if (
+    //   weatherValue == "partly_cloudy" ||
+    //   weatherValue == "mostly_clear" ||
+    //   weatherValue == "clear"
+    // ) {
+    //   (hour >= 21 || hour <= 6) && (weatherValue += "_night");
+    // }
+    this.weatherImage.src = `http://openweathermap.org/img/wn/${realTime.weather[0].icon}@2x.png`;
+    this.weatherStatus.textContent = realTime.weather[0].description;
     this.temp.innerHTML = `${Math.round(
-      realTime.temp.value
+      realTime.main.temp
     )}<span class="degreeCelsius">&deg;C</span>`;
   }
-
-  async addDaily(daily) {
+  async addDaily(daily, realTime) {
+    console.log("realTime: ", realTime);
+    console.log("daily: ", daily);
     this.maxTemp.innerHTML = `${Math.round(
-      daily[0].temp[1].max.value
+      realTime.main.temp_max
     )}<span class="degreeCelsius">&deg;</span>`;
     this.minTemp.innerHTML = `${Math.round(
-      daily[0].temp[0].min.value
+      realTime.main.temp_min
     )}<span class="degreeCelsius">&deg;</span>`;
     await daily.map((info, i) => {
       if (i < 5) {
@@ -118,7 +119,8 @@ export default class UI {
       .map(weather => Math.round(weather.temp.value))
       .slice(0, 9);
     console.log("hoursWeatherData: ", hoursWeatherData);
-    const chart = new Chartist.Line(
+
+    const chart = new LineChart(
       ".ct-chart",
       {
         labels: this.hoursSort(),
@@ -126,7 +128,7 @@ export default class UI {
         series: [hoursWeatherData],
       },
       {
-        lineSmooth: Chartist.Interpolation.simple({
+        lineSmooth: Interpolation.simple({
           divisor: 2,
         }),
         fullWidth: true,
@@ -135,7 +137,7 @@ export default class UI {
           left: 10,
         },
         low: 0,
-        high: 45,
+        high: 17,
         onlyInteger: true,
         axisX: {
           offset: 30,
@@ -158,11 +160,11 @@ export default class UI {
           showGrid: false,
         },
         showArea: true,
-        plugins: [
-          Chartist.plugins.ctPointLabels({
-            textAnchor: "middle",
-          }),
-        ],
+        // plugins: [
+        //   Plugins.ctPointLabels({
+        //     textAnchor: "middle",
+        //   }),
+        // ],
       }
     );
     chart.on("draw", function (data) {
@@ -177,7 +179,7 @@ export default class UI {
               .translate(0, data.chartRect.height())
               .stringify(),
             to: data.path.clone().stringify(),
-            easing: Chartist.Svg.Easing.easeOutQuint,
+            easing: Svg.Easing.easeOutQuint,
           },
         });
       }
@@ -186,31 +188,8 @@ export default class UI {
 
   hoursSort() {
     const hours = [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+      21, 22, 23, 24,
     ];
     const currentTime = this.date.d.getHours();
     const currentTimeIndex = hours.indexOf(currentTime);

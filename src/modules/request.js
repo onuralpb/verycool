@@ -12,16 +12,16 @@ export default class Request {
     // };
 
     // json for json-server
-    // this.url = [
-    //   "http://localhost:5555/anlik", //realtime
-    //   "http://localhost:5555/saatlik", //hourly
-    //   "http://localhost:5555/gunluk", //daily
-    // ];
     this.url = [
-      "https://api.climacell.co/v3/weather/realtime?lat=40.998800&lon=29.081584&unit_system=si&fields=temp%2Cwind_gust%2Cfeels_like%2Cdewpoint%2Chumidity%2Cwind_speed%2Croad_risk_score%2Csunrise%2Csunset%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //realtime
-      "https://api.climacell.co/v3/weather/forecast/hourly?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //hourly
-      "https://api.climacell.co/v3/weather/forecast/daily?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp%2Cwind_speed%2Cprecipitation_probability%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //daily
+      "https://api.openweathermap.org/data/2.5/weather?lat=40.998800&lon=29.081584&appid=8ebdb5d6edca925cc6c1acb9b2993eea&units=metric&lang=tr", //realtime
+      "http://localhost:5555/saatlik", //hourly
+      "https://api.openweathermap.org/data/2.5/forecast?lat=40.998800&lon=29.081584&appid=8ebdb5d6edca925cc6c1acb9b2993eea&units=metric&lang=tr", //daily
     ];
+    // this.url = [
+    //   "https://api.climacell.co/v3/weather/realtime?lat=40.998800&lon=29.081584&unit_system=si&fields=temp%2Cwind_gust%2Cfeels_like%2Cdewpoint%2Chumidity%2Cwind_speed%2Croad_risk_score%2Csunrise%2Csunset%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //realtime
+    //   "https://api.climacell.co/v3/weather/forecast/hourly?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //hourly
+    //   "https://api.climacell.co/v3/weather/forecast/daily?lat=40.998800&lon=29.081584&unit_system=si&start_time=now&fields=temp%2Cwind_speed%2Cprecipitation_probability%2Cweather_code&apikey=bQQaqHmphXXE0qAAz47HTvl5FCfNkd87", //daily
+    // ];
   }
 
   async getAllData() {
